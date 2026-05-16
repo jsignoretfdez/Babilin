@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#faf9f5",
+                    "inverse-on-surface": "#f2f1ed",
+                    "surface-container-high": "#e9e8e4",
+                    "outline": "#73787c",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e3e2df",
+                    "secondary-container": "#fdc5b6",
+                    "on-surface": "#1b1c1a",
+                    "surface-dim": "#dbdad6",
+                    "background": "#faf9f5",
+                    "on-secondary-fixed": "#30130b",
+                    "primary": "#486173",
+                    "primary-fixed-dim": "#afcadf",
+                    "on-primary": "#ffffff",
+                    "surface": "#faf9f5",
+                    "on-primary-fixed-variant": "#304a5b",
+                    "on-surface-variant": "#42474c",
+                    "surface-container-low": "#f4f4f0",
+                    "primary-container": "#bed9ee",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#ffdbd1",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#4d614f",
+                    "tertiary-container": "#c5dbc4",
+                    "tertiary-fixed-dim": "#b7ccb6",
+                    "on-primary-container": "#465f71",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#506351",
+                    "primary-fixed": "#cbe6fb",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#2f312e",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#c2c7cc",
+                    "surface-tint": "#486173",
+                    "surface-container": "#efeeea",
+                    "on-tertiary-fixed": "#0e1f11",
+                    "on-secondary-fixed-variant": "#633d33",
+                    "on-primary-fixed": "#011e2e",
+                    "inverse-primary": "#afcadf",
+                    "on-tertiary-fixed-variant": "#384b3a",
+                    "tertiary-fixed": "#d2e8d1",
+                    "surface-container-highest": "#e3e2df",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#794f44",
+                    "secondary": "#7e5449",
+                    "secondary-fixed-dim": "#f1baac",
+                    "on-background": "#1b1c1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "base": "8px",
+                    "gutter": "24px",
+                    "margin-desktop": "48px",
+                    "max-width": "1280px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Quicksand"],
+                    "label-lg": ["Quicksand"],
+                    "headline-sm": ["Quicksand"],
+                    "headline-md": ["Quicksand"],
+                    "headline-lg-mobile": ["Quicksand"],
+                    "body-md": ["Quicksand"],
+                    "label-sm": ["Quicksand"],
+                    "headline-lg": ["Quicksand"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-sm": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md": ["28px", {"lineHeight": "34px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                    "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto bg-background/80 dark:bg-background/80 backdrop-blur-md shadow-[0_10px_30px_rgba(92,88,84,0.05)]">
+<div class="flex items-center gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-secondary">Babilín</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-soft-charcoal hover:text-primary transition-colors font-label-lg" href="#">Home</a>
+<a class="text-soft-charcoal hover:text-primary transition-colors font-label-lg" href="#">Educational Project</a>
+<a class="text-soft-charcoal hover:text-primary transition-colors font-label-lg" href="#">Facilities</a>
+<a class="text-soft-charcoal hover:text-primary transition-colors font-label-lg" href="#">Admissions</a>
+<a class="text-soft-charcoal hover:text-primary transition-colors font-label-lg" href="#">Blog</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 rounded-full border border-primary text-primary font-label-lg hover:scale-105 transition-all">Contact</button>
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-label-lg hover:scale-105 transition-all">Visit Us</button>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative px-margin-desktop py-20 flex flex-col items-center text-center overflow-hidden">
+<div class="absolute inset-0 z-0 opacity-10">
+<div class="absolute top-10 left-10 w-32 h-32 bg-primary-container rounded-full blur-3xl"></div>
+<div class="absolute bottom-10 right-20 w-48 h-48 bg-secondary-container rounded-full blur-3xl"></div>
+</div>
+<div class="relative z-10 max-w-3xl">
+<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-tertiary-container text-on-tertiary-container font-label-sm mb-6">
+<span class="material-symbols-outlined text-[18px]">skillet</span>
+                    COCINA PROPIA Y SALUDABLE
+                </span>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-6">Nuestra Cocina y Menú Mensual</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10">
+                    En Babilín, creemos que una buena alimentación es la base del crecimiento. Elaboramos menús bilingües, equilibrados y llenos de sabor cada día en nuestras propias instalaciones.
+                </p>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-on-primary font-label-lg shadow-lg hover:scale-105 transition-all">
+<span class="material-symbols-outlined">download</span>
+                        Descargar Menú PDF
+                    </button>
+<button class="flex items-center gap-2 px-8 py-4 rounded-full bg-surface-container-highest text-primary font-label-lg hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined">nutrition</span>
+                        Info Nutricional
+                    </button>
+</div>
+</div>
+</section>
+<!-- Menu Navigation & Filtering -->
+<section class="px-margin-desktop mb-12">
+<div class="max-w-max mx-auto flex gap-4 p-1.5 bg-surface-container-low rounded-full">
+<button class="px-8 py-2 rounded-full bg-white text-primary font-label-lg shadow-sm">Mes Actual</button>
+<button class="px-8 py-2 rounded-full text-on-surface-variant font-label-lg hover:bg-white/50 transition-all">Mes Próximo</button>
+</div>
+</section>
+<!-- Bento Grid Menu Display -->
+<section class="px-margin-desktop pb-24 max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Week 1: Detailed Focus -->
+<div class="md:col-span-8 glass-card rounded-[2rem] p-8 shadow-sm">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-headline-md text-headline-md text-secondary">Semana 1</h2>
+<p class="font-body-md text-on-surface-variant">Del 1 al 5 de Mayo</p>
+</div>
+<div class="flex gap-2">
+<span class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">egg</span>
+</span>
+<span class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">eco</span>
+</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-5 gap-4">
+<!-- Lunes -->
+<div class="flex flex-col gap-3 p-4 rounded-2xl bg-white/50 border border-white">
+<span class="font-label-lg text-primary">Lunes</span>
+<div class="space-y-2">
+<p class="text-xs font-bold uppercase text-on-surface-variant/60">Comida</p>
+<p class="text-sm font-medium">Crema de calabaza y zanahoria</p>
+<p class="text-sm">Pollo asado con manzanitas</p>
+</div>
+<div class="mt-auto pt-2 border-t border-outline-variant/30">
+<p class="text-xs font-bold uppercase text-on-surface-variant/60">Merienda</p>
+<p class="text-sm italic">Fruta de temporada</p>
+</div>
+</div>
+<!-- Martes -->
+<div class="flex flex-col gap-3 p-4 rounded-2xl bg-primary-container/20 border border-primary-container/30">
+<span class="font-label-lg text-primary">Martes</span>
+<div class="space-y-2">
+<p class="text-xs font-bold uppercase text-on-surface-variant/60">Comida</p>
+<p class="text-sm font-medium">Lentejas con verduras picaditas</p>
+<p class="text-sm">Arroz blanco con huevo duro</p>
+</div>
+<div class="mt-auto pt-2 border-t border-outline-variant/30">
+<p class="text-xs font-bold uppercase text-on-surface-variant/60">Merienda</p>
+<p class="text-sm italic">Yogur natural</p>
+</div>
+</div>
+<!-- Miércoles -->
+<div class="flex flex-col gap-3 p-4 rounded-2xl bg-white/50 border border-white">
+<span class="font-label-lg text-primary">Miércoles</span>
+<div class="space-y-2">
+<p class="text-xs font-bold uppercase text-on-surface-variant/60">Comida</p>
+<p class="text-sm font-medium">Sopa de letras casera</p>
+<p class="text-sm">Merluza al horno con patatas</p>
+</div>
+<div class="mt-auto pt-2 border-t border-outline-variant/30">
+<p class="text-xs font-bold uppercase text-on-surface-variant/60">Merienda</p>
+<p class="text-sm italic">Bocadillo de queso</p>
+</div>
+</div>
+<!-- Jueves -->
+<div class="flex flex-col gap-3 p-4 rounded-2xl bg-secondary-fixed/20 border border-secondary-fixed/30">
+<span class="font-label-lg text-primary">Jueves</span>
+<div class="space-y-2">
+<p class="text-xs font-bold uppercase text-on-surface-variant/60">Comida</p>
+<p class="text-sm font-medium">Macarrones con tomate natural</p>
+<p class="text-sm">Tortilla francesa con guisantes</p>
+</div>
+<div class="mt-auto pt-2 border-t border-outline-variant/30">
+<p class="text-xs font-bold uppercase text-on-surface-variant/60">Merienda</p>
+<p class="text-sm italic">Fruta variada</p>
+</div>
+</div>
+<!-- Viernes -->
+<div class="flex flex-col gap-3 p-4 rounded-2xl bg-white/50 border border-white">
+<span class="font-label-lg text-primary">Viernes</span>
+<div class="space-y-2">
+<p class="text-xs font-bold uppercase text-on-surface-variant/60">Comida</p>
+<p class="text-sm font-medium">Garbanzos estofados suaves</p>
+<p class="text-sm">Filete de ternera a la plancha</p>
+</div>
+<div class="mt-auto pt-2 border-t border-outline-variant/30">
+<p class="text-xs font-bold uppercase text-on-surface-variant/60">Merienda</p>
+<p class="text-sm italic">Bizcocho casero sin azúcar</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Featured Image / Side Card -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<div class="relative h-64 rounded-[2rem] overflow-hidden shadow-sm group">
+<img alt="Comida saludable para niños" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A professional and aesthetic photo of a healthy children's meal served on a pastel blue divided silicone plate. The meal includes a colorful vegetable puree, small pieces of grilled chicken, and fresh fruit slices. The lighting is soft and bright, creating a clean light-mode atmosphere. The background is a soft-focus kitchen counter in a modern, friendly nursery school setting with airy pastel tones and a sense of serenity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdlJb-fB7MP3y_uES8AWO7q2-eLi-llqhj-aGQuAJOYhoB-NXDPAScvX1fIl6Ou-SPtLiFFmOXbAV0uKOkkHQynMazImChv3V-UmL829gY3bne1bJkZfD_7ONzH5Puv_UhDLhI8GFgSDVEPKTVuMwJWO1yAdeZmgloUonaFeP44wNz-lQ6fzUA99dUaiP9jySEsvR9R3N2NPvG_AeBvbQYbhnUp12b2sSNZysvZBbjOozCO4EcmYh3BnIalBtgnIEdL3ldx9TE--c"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
+<p class="text-white font-headline-sm">Ingredientes 100% naturales</p>
+</div>
+</div>
+<div class="flex-1 glass-card rounded-[2rem] p-8 flex flex-col items-start gap-4">
+<span class="material-symbols-outlined text-secondary text-[40px]" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<h3 class="font-headline-sm text-primary">¿Alergias o Intolerancias?</h3>
+<p class="text-sm text-on-surface-variant">Nuestro equipo de cocina adapta cada plato a las necesidades específicas de tu pequeño con total seguridad.</p>
+<a class="mt-auto font-label-lg text-secondary underline decoration-secondary/30 underline-offset-4 hover:text-primary transition-colors" href="#">Hablar con nutrición</a>
+</div>
+</div>
+<!-- Week 2 & 3: Compact Views -->
+<div class="md:col-span-6 glass-card rounded-[2rem] p-8">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-2xl bg-tertiary-container flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">nutrition</span>
+</div>
+<h2 class="font-headline-sm text-primary">Semana 2</h2>
+</div>
+<ul class="space-y-4">
+<li class="flex justify-between items-center p-3 rounded-xl bg-white/40 border border-white">
+<span class="font-label-lg w-20">Lunes</span>
+<span class="text-sm text-right">Lentejas con arroz y Macedonia</span>
+</li>
+<li class="flex justify-between items-center p-3 rounded-xl bg-white/40 border border-white">
+<span class="font-label-lg w-20">Martes</span>
+<span class="text-sm text-right">Pure de verduras y Albóndigas de pollo</span>
+</li>
+<li class="flex justify-between items-center p-3 rounded-xl bg-white/40 border border-white">
+<span class="font-label-lg w-20">Miércoles</span>
+<span class="text-sm text-right">Fideuá de pescado y Yogur</span>
+</li>
+<li class="flex justify-between items-center p-3 rounded-xl bg-white/40 border border-white">
+<span class="font-label-lg w-20">Jueves</span>
+<span class="text-sm text-right">Crema de puerros y Tortilla de patata</span>
+</li>
+<li class="flex justify-between items-center p-3 rounded-xl bg-white/40 border border-white">
+<span class="font-label-lg w-20">Viernes</span>
+<span class="text-sm text-right">Arroz a la cubana y Pera asada</span>
+</li>
+</ul>
+</div>
+<div class="md:col-span-6 glass-card rounded-[2rem] p-8">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-2xl bg-primary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">garden_cart</span>
+</div>
+<h2 class="font-headline-sm text-primary">Semana 3</h2>
+</div>
+<ul class="space-y-4">
+<li class="flex justify-between items-center p-3 rounded-xl bg-white/40 border border-white">
+<span class="font-label-lg w-20">Lunes</span>
+<span class="text-sm text-right">Espaguetis con verduras y Manzana</span>
+</li>
+<li class="flex justify-between items-center p-3 rounded-xl bg-white/40 border border-white">
+<span class="font-label-lg w-20">Martes</span>
+<span class="text-sm text-right">Guiso de patatas con carne y Yogur</span>
+</li>
+<li class="flex justify-between items-center p-3 rounded-xl bg-white/40 border border-white">
+<span class="font-label-lg w-20">Miércoles</span>
+<span class="text-sm text-right">Crema de calabacín y Pescado al horno</span>
+</li>
+<li class="flex justify-between items-center p-3 rounded-xl bg-white/40 border border-white">
+<span class="font-label-lg w-20">Jueves</span>
+<span class="text-sm text-right">Lentejas y Huevo con jamón</span>
+</li>
+<li class="flex justify-between items-center p-3 rounded-xl bg-white/40 border border-white">
+<span class="font-label-lg w-20">Viernes</span>
+<span class="text-sm text-right">Arroz con pollo y Compota de fruta</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="px-margin-desktop py-16 bg-primary-container/30">
+<div class="max-w-container-max mx-auto text-center flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-[48px] mb-4">glass_cup</span>
+<h2 class="font-headline-md text-headline-md text-primary mb-4">¿Quieres el menú en la nevera?</h2>
+<p class="font-body-lg text-on-surface-variant mb-8 max-w-xl">Descarga la versión completa del mes con sugerencias de cenas para equilibrar la dieta diaria de tus hijos en casa.</p>
+<button class="px-12 py-5 rounded-full bg-secondary text-on-secondary font-headline-sm shadow-xl hover:scale-105 transition-all">
+                    Descargar Menú en PDF
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full px-margin-desktop py-12 flex flex-col md:flex-row justify-between items-center gap-gutter bg-surface-container-low border-t border-outline-variant">
+<div class="flex flex-col gap-2">
+<span class="font-headline-md text-headline-md text-secondary">Babilín</span>
+<p class="font-body-md text-soft-charcoal max-w-xs text-center md:text-left">© 2024 Escuela Infantil Babilín. British-Inspired Bilingual Education in Chamartín.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-soft-charcoal hover:text-secondary underline decoration-mint-glass decoration-2 underline-offset-4 transition-opacity duration-200 font-body-md" href="#">Bilingual Project</a>
+<a class="text-soft-charcoal hover:text-secondary underline decoration-mint-glass decoration-2 underline-offset-4 transition-opacity duration-200 font-body-md" href="#">Location</a>
+<a class="text-soft-charcoal hover:text-secondary underline decoration-mint-glass decoration-2 underline-offset-4 transition-opacity duration-200 font-body-md" href="#">Privacy Policy</a>
+<a class="text-soft-charcoal hover:text-secondary underline decoration-mint-glass decoration-2 underline-offset-4 transition-opacity duration-200 font-body-md" href="#">Terms of Service</a>
+<a class="text-soft-charcoal hover:text-secondary underline decoration-mint-glass decoration-2 underline-offset-4 transition-opacity duration-200 font-body-md" href="#">Cookies</a>
+</div>
+</footer>
+</body></html>

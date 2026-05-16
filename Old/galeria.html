@@ -1,0 +1,182 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Galería - Babilín</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "surface": "#faf9f5",
+                        "secondary-container": "#fdc5b6",
+                        "primary-container": "#bed9ee",
+                        "surface-container-highest": "#e3e2df",
+                        "surface-bright": "#faf9f5",
+                        "secondary-fixed-dim": "#f1baac",
+                        "on-secondary-container": "#794f44",
+                        "on-primary": "#ffffff",
+                        "secondary": "#7e5449",
+                        "surface-variant": "#e3e2df",
+                        "secondary-fixed": "#ffdbd1",
+                        "on-surface": "#1b1c1a",
+                        "on-secondary-fixed": "#30130b",
+                        "on-primary-container": "#465f71",
+                        "surface-container": "#efeeea",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#384b3a",
+                        "primary": "#486173",
+                        "inverse-surface": "#2f312e",
+                        "outline-variant": "#c2c7cc",
+                        "on-secondary-fixed-variant": "#633d33",
+                        "on-primary-fixed-variant": "#304a5b",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#486173",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dbdad6",
+                        "tertiary-fixed": "#d2e8d1",
+                        "inverse-primary": "#afcadf",
+                        "background": "#faf9f5",
+                        "surface-container-high": "#e9e8e4",
+                        "primary-fixed": "#cbe6fb",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#4d614f",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#0e1f11",
+                        "inverse-on-surface": "#f2f1ed",
+                        "on-background": "#1b1c1a",
+                        "tertiary-container": "#c5dbc4",
+                        "primary-fixed-dim": "#afcadf",
+                        "surface-container-low": "#f4f4f0",
+                        "outline": "#73787c",
+                        "on-surface-variant": "#42474c",
+                        "on-primary-fixed": "#011e2e",
+                        "tertiary": "#506351",
+                        "tertiary-fixed-dim": "#b7ccb6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "48px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "max-width": "1280px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Quicksand"],
+                        "body-md": ["Quicksand"],
+                        "label-sm": ["Quicksand"],
+                        "headline-lg-mobile": ["Quicksand"],
+                        "body-lg": ["Quicksand"],
+                        "headline-sm": ["Quicksand"],
+                        "label-lg": ["Quicksand"],
+                        "headline-md": ["Quicksand"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-sm": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-md": ["28px", {"lineHeight": "34px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Quicksand', sans-serif; }
+    </style>
+<style data-stitch-cursor=""></style><style data-stitch-scroll-lock=""></style></head>
+<body class="font-body-md text-body-md antialiased relative min-h-screen pt-36">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm dark:bg-surface-container-low shadow-[0_10px_30px_rgba(119,119,120,0.05)]"><div class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm"><div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop"><div class="flex justify-between items-center h-24"><div class="flex items-center gap-4"><img alt="Babil�n Logo" class="h-16 md:h-20 w-auto object-contain" src="{{DATA:IMAGE:IMAGE_6}}"></div><div class="flex items-center gap-4"><button class="hidden md:block bg-primary-container text-on-primary-container font-label-lg text-label-lg px-6 py-2 rounded-lg hover:opacity-80 transition-opacity active:scale-95 duration-200">Acceso padres</button><button class="md:hidden text-primary p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"><span class="material-symbols-outlined text-3xl">menu</span></button></div></div><nav class="hidden md:flex items-center justify-center gap-8 h-12 border-t border-outline-variant/30"><a class="font-label-md text-label-md text-primary dark:text-primary-fixed font-bold hover:opacity-80 transition-opacity uppercase tracking-wide" href="#">Inicio</a><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:opacity-80 transition-opacity uppercase tracking-wide" href="#">Sobre nosotros</a><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:opacity-80 transition-opacity uppercase tracking-wide" href="#">Proyecto educativo</a><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:opacity-80 transition-opacity uppercase tracking-wide" href="#">Instalaciones</a><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:opacity-80 transition-opacity uppercase tracking-wide" href="#">Contacto</a></nav></div></div></header><div class="hidden fixed inset-0 z-[60] bg-surface/95 backdrop-blur-lg px-margin-mobile flex flex-col gap-6" id="mobile-menu"><div class="flex justify-end p-margin-mobile"><button class="text-primary p-2" onclick="document.getElementById('mobile-menu').classList.add('hidden')"><span class="material-symbols-outlined text-3xl">close</span></button></div><nav class="flex flex-col gap-6 items-center text-center"><a class="font-headline-sm text-headline-sm text-primary font-bold" href="#" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Inicio</a><a class="font-headline-sm text-headline-sm text-on-surface-variant" href="#" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Sobre nosotros</a><a class="font-headline-sm text-headline-sm text-on-surface-variant" href="#" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Proyecto educativo</a><a class="font-headline-sm text-headline-sm text-on-surface-variant" href="#" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Instalaciones</a><a class="font-headline-sm text-headline-sm text-on-surface-variant" href="#" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contacto</a><hr class="w-full border-outline-variant/30 my-4"><button class="bg-primary-container text-on-primary-container font-label-lg text-label-lg px-10 py-4 rounded-lg w-full max-w-xs">Acceso padres</button></nav></div>
+<!-- Main Content -->
+<main class="flex-grow pt-24 pb-12 px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto w-full">
+<!-- Header Section -->
+<div class="text-center mb-12">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-4">Nuestras Instalaciones</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Explora los espacios donde tus pequeños aprenden, juegan y crecen cada día. Un entorno seguro, luminoso y diseñado para su desarrollo integral.
+            </p>
+</div>
+<!-- Gallery Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 md:gap-6 auto-rows-[250px]">
+<!-- Aula Monitos (Large) -->
+<div class="md:col-span-2 md:row-span-2 relative rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(190,217,238,0.15)] group bg-surface-container-lowest border border-surface-container group cursor-pointer transition-all hover:-translate-y-1">
+<img alt="Aula Monitos" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A bright, airy nursery classroom designed for toddlers, bathed in natural sunlight. The room features soft pastel colors, predominantly sky blue and mint green, creating a calm, serene atmosphere. Small wooden tables and chairs are arranged neatly, and shelves are filled with educational toys and colorful books. The aesthetic is clean, modern, and inviting, perfectly aligning with a soft, optimistic wellness style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5ywlTEl7YjvP2xyWp1Ik5eDlZe4odotqKp4SRrwOULUbxCnq-IFnwOxZW_R0eFchgjxv6wGHReYTf4V5UIeMZp8kSPAzll20dGOJ_yjXMkqSbqvQRgMOXAcevknq0PxZAoJcU5KNhDwgD14HvqZb0jlp4DQSfBU0Rm9Yrgw7tBfSG0AuzIU26B1gHjn3rS0nfaQFGhD3flGz_SRHaonGV0wTcp86iYYy1uB-uIKcStgb6VHOK5JyLrzHAyHcY0I7DzsGdrRdbV98">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<span class="inline-block bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm px-3 py-1 rounded-full mb-2">0-1 Años</span>
+<h3 class="font-headline-md text-headline-md text-white">Aula Monitos</h3>
+</div>
+</div>
+<!-- Aula Leones -->
+<div class="relative rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(190,217,238,0.15)] group bg-surface-container-lowest border border-surface-container cursor-pointer transition-all hover:-translate-y-1">
+<img alt="Aula Leones" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A cheerful preschool classroom designed for older children, featuring vibrant but soft colors. The room includes a cozy reading corner with plush cushions and a colorful rug. Sunlight streams through large windows, highlighting the creative artwork displayed on the walls. The overall mood is energetic yet structured, maintaining a clean, modern aesthetic with gentle sky blue accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS5MFjJSFmJpBA9H8Bt1kzf9ZUR_vtGQO2B2OcCsqAUw1OE79iWmGiTNfzgZC7oANw8wQnBgJvWecVrMft__XRm72GSlsqXNbEhOh5VuG8HZvMbnFvNkjfHT7ggn_Il28oyW9EXI4NukreaPYd6iWknPcNmunxc7DciBvZr7o8gl6vxEUR7M1UZfrgnoEdgZDyAvK877a5ZpUeffJ11cDu6I5P-kH7Ee80n3gS0PZT7fWxA3r5c_jZ5BOAdzcvc_ABZJMVT_SZne4">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4">
+<span class="inline-block bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-3 py-1 rounded-full mb-2">1-2 Años</span>
+<h3 class="font-headline-sm text-headline-sm text-white">Aula Leones</h3>
+</div>
+</div>
+<!-- Aula Ositos -->
+<div class="relative rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(190,217,238,0.15)] group bg-surface-container-lowest border border-surface-container cursor-pointer transition-all hover:-translate-y-1">
+<img alt="Aula Ositos" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A spacious kindergarten classroom tailored for older preschoolers. The environment is orderly and inspiring, with interactive learning stations and neatly organized craft supplies. Soft, diffused lighting enhances the pastel color palette of the room, evoking a sense of safety and curiosity. The design is minimal and uncluttered, fitting a serene, modern educational setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCurWYsDnTDvBx0i-m96g_Z9IhwPcJspt1N8cHQ9ZbVIf85xOdmkhMuKZcKF1aPafLRgtV13z-Hl3zFvgJkmc61vKngg9_ixcx3-mitGGDKYROSdWpneAbh8O2sr9Hv8kc7tQToCS8tJ-AFrAiI_22ayMgns6RNH5mOmIGLfv-vGGqKeCRzYA2ahdBancwMkNDlKt6Aj_TOWl6Z1QeoOWRuldPU-Uel2k3M4p3_Dda2v-6k2R4O2xqcydAGeGrdGz8BVG98mFoPWEU">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4">
+<span class="inline-block bg-primary-container text-on-primary-container font-label-sm text-label-sm px-3 py-1 rounded-full mb-2">2-3 Años</span>
+<h3 class="font-headline-sm text-headline-sm text-white">Aula Ositos</h3>
+</div>
+</div>
+<!-- Patio -->
+<div class="md:col-span-2 relative rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(190,217,238,0.15)] group bg-surface-container-lowest border border-surface-container cursor-pointer transition-all hover:-translate-y-1">
+<img alt="Patio Exterior" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="An inviting outdoor playground for a nursery school, featuring safe, modern play equipment in soft pastel colors. The area is partially shaded by gentle, leafy trees, and the ground is covered with a soft, protective surface. The scene is bright and sunny, conveying a feeling of joyful, carefree outdoor play in a secure, serene environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8WO2hfk9p_7aUJp0r3bhXBb9bl15zCIywGFBwVOwUZ-wLyeqQYp9c4-DUjISBclG66ISL3cmhJpfFN07VWW6zLGHebZcfaG1MMBHgFIDjGH9pwGNNmoFDNtQ3Mhw-ADUE2Alb1Sm6i_0nIwXEidnQGEwDnKC4o1lT-WkDIIxPpsyahfLgsTHiY2EZCdNi7n2O2vyxK3oEEU1qUjZP0ZnkeF6jVexeN4NRg3HKsq2TDrMr8wFfAtK7spm0jne-adJLwoBfnGNe254">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<span class="inline-block bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm px-3 py-1 rounded-full mb-2">Zonas Comunes</span>
+<h3 class="font-headline-md text-headline-md text-white">Patio Exterior</h3>
+</div>
+</div>
+<!-- Comedor -->
+<div class="relative rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(190,217,238,0.15)] group bg-surface-container-lowest border border-surface-container cursor-pointer transition-all hover:-translate-y-1">
+<img alt="Comedor" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A clean, bright nursery dining area with child-sized tables and chairs. The room is decorated in calming pastel tones, with sky blue accents that promote a peaceful mealtime environment. Natural light illuminates the space, highlighting the hygienic, orderly setup. The aesthetic is soft, approachable, and highly functional, reflecting a modern wellness-oriented design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHO7fOHEnwAYnChuLtw2Er9uarp2cDYYapnp1zCkfWfqJPN8SbL6u0LrOgtfwBLz3urGM5ImTnhqh5mOyLV4lvM82M-o4CMotsGGM47zWXv6fyrJ1ax7xNvpo_SvBpCETkgKR1-FHuyfpOItXHa4Ys1Qj6gQgEaZjIhG2hfRKnSMVBDV0aHq6uwrHqZpe2o-gx94m1wywBJGTIKSk5pg2X9RvFq2-OHLXCGsqdUm-9OVozXOcGu68_vcunHmxjSbhu5enOlxamdFI">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4">
+<span class="inline-block bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-3 py-1 rounded-full mb-2">Zonas Comunes</span>
+<h3 class="font-headline-sm text-headline-sm text-white">Comedor</h3>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-margin-mobile md:px-margin-desktop bg-background dark:bg-on-background bg-surface-container-lowest dark:bg-surface-dim flat no shadows flex flex-col md:flex-row justify-between items-center gap-8 max-w-container-max mx-auto text-center md:text-left mt-auto">
+<div class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">
+            Babilín
+        </div>
+<nav class="flex flex-wrap justify-center gap-6">
+<a class="font-label-md text-label-md text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer transition-all" href="#">Pillars</a>
+<a class="font-label-md text-label-md text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer transition-all" href="#">Facilities</a>
+<a class="font-label-md text-label-md text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer transition-all" href="#">Admissions</a>
+<a class="font-label-md text-label-md text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer transition-all" href="#">Privacy Policy</a>
+</nav>
+<div class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim">
+            © 2024 Babilín Bilingual Nursery Chamartín. All rights reserved.
+        </div>
+</footer>
+
+
+</body></html>

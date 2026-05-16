@@ -1,0 +1,12 @@
+{
+  "name": "babilin",
+  "version": "1.0.0",
+  "description": "Babilín - Escuela Infantil Bilingüe",
+  "scripts": {
+    "dev": "concurrently \"node server/server.js\" \"cd client && npx vite\"",
+    "install:all": "pnpm install && cd server && pnpm install && cd ../client && pnpm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

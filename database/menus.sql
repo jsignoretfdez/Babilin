@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS menus (
+    id SERIAL PRIMARY KEY,
+    month VARCHAR(20) NOT NULL,
+    year INTEGER NOT NULL,
+    pdf_path VARCHAR(255),
+    extracted_text TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

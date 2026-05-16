@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Parent Dashboard - Babilín</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#b7ccb6",
+                        "primary": "#486173",
+                        "surface-dim": "#dbdad6",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#cbe6fb",
+                        "surface-tint": "#486173",
+                        "primary-fixed-dim": "#afcadf",
+                        "on-secondary-fixed-variant": "#633d33",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#ffdbd1",
+                        "tertiary-fixed": "#d2e8d1",
+                        "tertiary-container": "#c5dbc4",
+                        "on-primary-fixed": "#011e2e",
+                        "tertiary": "#506351",
+                        "background": "#faf9f5",
+                        "on-tertiary-fixed-variant": "#384b3a",
+                        "surface-container": "#efeeea",
+                        "inverse-surface": "#2f312e",
+                        "on-primary-fixed-variant": "#304a5b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#794f44",
+                        "on-surface-variant": "#42474c",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f2f1ed",
+                        "surface-container-high": "#e9e8e4",
+                        "on-background": "#1b1c1a",
+                        "outline": "#73787c",
+                        "on-tertiary-container": "#4d614f",
+                        "inverse-primary": "#afcadf",
+                        "secondary-container": "#fdc5b6",
+                        "surface-container-low": "#f4f4f0",
+                        "on-tertiary-fixed": "#0e1f11",
+                        "on-primary-container": "#465f71",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#30130b",
+                        "surface": "#faf9f5",
+                        "surface-variant": "#e3e2df",
+                        "on-error": "#ffffff",
+                        "secondary": "#7e5449",
+                        "on-surface": "#1b1c1a",
+                        "error": "#ba1a1a",
+                        "primary-container": "#bed9ee",
+                        "surface-bright": "#faf9f5",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e3e2df",
+                        "secondary-fixed-dim": "#f1baac",
+                        "outline-variant": "#c2c7cc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width": "1280px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "margin-desktop": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Quicksand"],
+                        "body-md": ["Quicksand"],
+                        "label-sm": ["Quicksand"],
+                        "headline-sm": ["Quicksand"],
+                        "label-lg": ["Quicksand"],
+                        "headline-md": ["Quicksand"],
+                        "headline-lg": ["Quicksand"],
+                        "body-lg": ["Quicksand"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }],
+                        "headline-sm": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-md": ["28px", { "lineHeight": "34px", "fontWeight": "600" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style data-stitch-cursor=""></style>
+    <style data-stitch-scroll-lock=""></style>
+</head>
+
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col pt-28">
+    <!-- TopAppBar -->
+    <header
+        class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm dark:bg-surface-container-low shadow-[0_10px_30px_rgba(119,119,120,0.05)]">
+        <div class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="flex justify-between items-center h-24">
+                    <div class="flex items-center gap-4">
+                        <img alt="Babilín Logo" class="h-16 md:h-20 w-auto object-contain" src="./imagenes/logo.png" />
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button
+                            class="hidden md:block bg-primary-container text-on-primary-container font-label-lg text-label-lg px-6 py-2 rounded-lg hover:opacity-80 transition-opacity active:scale-95 duration-200">Acceso
+                            padres</button>
+                        <button class="md:hidden text-primary p-2"
+                            onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                            <span class="material-symbols-outlined text-3xl">menu</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Mobile Nav Menu -->
+    <div class="hidden fixed inset-0 z-40 bg-surface/95 backdrop-blur-lg px-margin-mobile flex flex-col gap-6"
+        id="mobile-menu">
+        <div class="flex justify-end p-margin-mobile pt-6">
+            <button class="text-primary p-2" onclick="document.getElementById('mobile-menu').classList.add('hidden')">
+                <span class="material-symbols-outlined text-3xl">close</span>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-6 items-center text-center">
+            <button
+                class="bg-primary-container text-on-primary-container font-label-lg text-label-lg px-10 py-4 rounded-lg w-full max-w-xs">Acceso
+                padres</button>
+        </nav>
+    </div>
+    <main class="flex-grow w-full max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-8 space-y-8">
+        <!-- Welcome Header -->
+        <section class="mb-8">
+            <h1
+                class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary mb-2">
+                Welcome, Parents</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant">Here is everything your little ones are up to
+                this month.</p>
+        </section>
+        <!-- Menú Mensual Section -->
+        <section class="space-y-4">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="material-symbols-outlined text-primary" data-icon="restaurant">restaurant</span>
+                <h2 class="font-headline-sm text-headline-sm text-primary">Menú Mensual</h2>
+            </div>
+            <div
+                class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_10px_30px_rgba(190,217,238,0.15)] border border-surface-container">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-label-lg text-label-lg text-on-surface">Today's Menu - October 24</h3>
+                    <span
+                        class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-3 py-1 rounded-full">Week
+                        4</span>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-tertiary-container text-on-tertiary-container p-2 rounded-lg mt-1">
+                            <span class="material-symbols-outlined" data-icon="bakery_dining">bakery_dining</span>
+                        </div>
+                        <div>
+                            <p class="font-label-lg text-label-lg text-on-surface">Morning Snack</p>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Fresh fruit puree (Apple &amp;
+                                Pear) with oatmeal.</p>
+                        </div>
+                    </div>
+                    <div class="h-px w-full bg-surface-variant"></div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-secondary-container text-on-secondary-container p-2 rounded-lg mt-1">
+                            <span class="material-symbols-outlined" data-icon="soup_kitchen">soup_kitchen</span>
+                        </div>
+                        <div>
+                            <p class="font-label-lg text-label-lg text-on-surface">Lunch</p>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Vegetable puree with chicken
+                                breast. Yogurt for dessert.</p>
+                        </div>
+                    </div>
+                </div>
+                <button
+                    class="w-full mt-6 py-3 rounded-lg border border-primary text-primary font-label-lg text-label-lg hover:bg-primary/5 transition-colors flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+                    Ver Menú Completo
+                </button>
+            </div>
+        </section>
+        <!-- Planes de Aula Section -->
+        <section class="space-y-4 mt-12">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="material-symbols-outlined text-primary" data-icon="school">school</span>
+                <h2 class="font-headline-sm text-headline-sm text-primary">Planes de Aula</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Baby Class -->
+                <div
+                    class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_10px_30px_rgba(190,217,238,0.15)] border border-surface-container flex flex-col h-full">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="h-12 w-12 rounded-full overflow-hidden flex-shrink-0">
+                            <img alt="Sleeping bear cub illustration" class="h-full w-full object-cover"
+                                src="https://placeholder.pics/svg/300" />
+                        </div>
+                        <h3 class="font-headline-sm text-headline-sm text-on-surface">Ositos</h3>
+                    </div>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant mb-2">0 - 1 Years</p>
+                    <p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-6">
+                        Nos centramos en la exploración sensorial con juguetes blandos y materiales texturizados. Introducimoscanciones de cuna relajantes durante la siesta.
+                    </p>
+                    <button
+                        class="text-primary font-label-lg text-label-lg flex items-center gap-1 hover:opacity-80 transition-opacity">
+                        View Plan <span class="material-symbols-outlined text-sm"
+                            data-icon="arrow_forward">arrow_forward</span>
+                    </button>
+                </div>
+                <!-- Toddler Class -->
+                <div
+                    class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_10px_30px_rgba(190,217,238,0.15)] border border-surface-container flex flex-col h-full">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-secondary-fixed text-on-secondary-fixed p-3 rounded-full">
+                            <span class="material-symbols-outlined" data-icon="toys">pets</span>
+                        </div>
+                        <h3 class="font-headline-sm text-headline-sm text-on-surface">Leones</h3>
+                    </div>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant mb-2">1 - 2 Years</p>
+                    <p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-6">
+                        Exploración de colores mediante la pintura con los dedos y juegos sencillos de reconocimiento de formas. El tiempo dedicado a la música se centra en el ritmo.
+                    </p>
+                    <button
+                        class="text-primary font-label-lg text-label-lg flex items-center gap-1 hover:opacity-80 transition-opacity">
+                        View Plan <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">pets</span>
+                    </button>
+                </div>
+                <!-- Preschool Class -->
+                <div
+                    class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_10px_30px_rgba(190,217,238,0.15)] border border-surface-container flex flex-col h-full">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-primary-fixed text-on-primary-fixed p-3 rounded-full">
+                            <span class="material-symbols-outlined" data-icon="palette">smart_toy</span>
+                        </div>
+                        <h3 class="font-headline-sm text-headline-sm text-on-surface">Monitos</h3>
+                    </div>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant mb-2">2 - 3 Years</p>
+                    <p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-6">
+                        Introducción a las hojas de otoño y los cambios climáticos. Practicaremos la motricidad fina con tijeras de seguridad y pegamento.
+                    </p>
+                    <button
+                        class="text-primary font-label-lg text-label-lg flex items-center gap-1 hover:opacity-80 transition-opacity">
+                        View Plan <span class="material-symbols-outlined text-sm"
+                            data-icon="arrow_forward">smart_toy</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="w-full py-12 px-margin-mobile md:px-margin-desktop bg-background dark:bg-on-background bg-surface-container-lowest dark:bg-surface-dim mt-auto">
+        <div
+            class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-container-max mx-auto text-center md:text-left">
+            <span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Babilín</span>
+            <div class="flex flex-wrap justify-center md:justify-end gap-6">
+                <span
+                    class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer">Pillars</span>
+                <span
+                    class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer">Facilities</span>
+                <span
+                    class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer">Admissions</span>
+                <span
+                    class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer">Privacy
+                    Policy</span>
+            </div>
+        </div>
+        <div class="mt-8 text-center font-label-sm text-label-sm text-secondary dark:text-secondary-fixed-dim">
+            © 2024 Babilín Bilingual Nursery Chamartín. All rights reserved.
+        </div>
+    </footer>
+</body>
+
+</html>

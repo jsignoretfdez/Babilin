@@ -1,0 +1,8 @@
+ALTER TABLE programmings ADD COLUMN IF NOT EXISTS class_info VARCHAR(255);
+ALTER TABLE programmings ADD COLUMN IF NOT EXISTS course VARCHAR(50);
+ALTER TABLE programmings ADD COLUMN IF NOT EXISTS unit_title VARCHAR(255);
+ALTER TABLE programmings ADD COLUMN IF NOT EXISTS unit_subtitle VARCHAR(255);
+ALTER TABLE programmings ADD COLUMN IF NOT EXISTS unit_description TEXT;
+ALTER TABLE programmings ADD COLUMN IF NOT EXISTS routines_text TEXT;
+ALTER TABLE programmings ADD COLUMN IF NOT EXISTS english_text TEXT;
+ALTER TABLE programmings ADD COLUMN IF NOT EXISTS important_days_text TEXT;

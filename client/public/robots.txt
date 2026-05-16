@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /padres
+Disallow: /login
+
+Sitemap: https://babilin.es/sitemap.xml
