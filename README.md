@@ -120,3 +120,4 @@ Esto iniciará simultáneamente:
 - Rutas protegidas según rol
 - Layout reutilizable (Header/Footer)
 # Babilin
+# Babilin
