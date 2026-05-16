@@ -119,3 +119,4 @@ Esto iniciará simultáneamente:
 - Autenticación JWT con roles (admin/parent)
 - Rutas protegidas según rol
 - Layout reutilizable (Header/Footer)
+# Babilin
