@@ -4,6 +4,22 @@ const path = require('path');
 const pdfParse = require('pdf-parse');
 const PDFDocument = require('pdfkit');
 
+const cleanText = (text) => {
+  if (!text) return '';
+  // Fix encoding issues: replace common problematic characters
+  return text
+    .replace(/\u0000/g, '')  // Remove null characters
+    .replace(/Ð/g, '')       // Remove invalid Ð characters
+    .replace(/ð/g, 'd')      // Replace ð with d
+    .replace(/Ø/g, 'O')     // Replace Ø with O
+    .replace(/ø/g, 'o')     // Replace ø with o
+    .replace(/Æ/g, 'AE')    // Replace Æ with AE
+    .replace(/æ/g, 'ae')    // Replace æ with ae
+    .replace(/Œ/g, 'OE')    // Replace Œ with OE
+    .replace(/œ/g, 'oe')    // Replace œ with oe
+    .trim();
+};
+
 const uploadProgramming = async (req, res) => {
   try {
     const { classroom, month, year, course, class_info, unit_title, unit_subtitle, unit_description, routines_text, english_text, important_days_text } = req.body;
@@ -173,10 +189,10 @@ const generateProgrammingPdf = async (req, res) => {
 
     // Title
     doc.fontSize(22).fillColor(primaryColor).font('Helvetica-Bold');
-    doc.text(programming.unit_title || 'Programación Mensual', { align: 'center', width: contentWidth });
+    doc.text(cleanText(programming.unit_title || 'Programación Mensual'), { align: 'center', width: contentWidth });
     if (programming.unit_subtitle) {
       doc.fontSize(14).fillColor('#73787c').font('Helvetica');
-      doc.text(programming.unit_subtitle, { align: 'center', width: contentWidth });
+      doc.text(cleanText(programming.unit_subtitle), { align: 'center', width: contentWidth });
     }
     yPos = doc.y + 15;
 
@@ -219,8 +235,20 @@ const generateProgrammingPdf = async (req, res) => {
       yPos = sectionY + sectionH + 30;
     };
 
-    if (programming.unit_description) {
-      drawSection('Descripción de la Unidad', programming.unit_description, primaryContainer);
+if (programming.unit_description) {
+      drawSection('Descripción de la Unidad', cleanText(programming.unit_description), primaryContainer);
+    }
+
+    if (programming.routines_text) {
+      drawSection('Rutinas y Consejos', cleanText(programming.routines_text), tertiaryContainer);
+    }
+
+    if (programming.english_text) {
+      drawSection('Inglés', cleanText(programming.english_text), secondaryContainer);
+    }
+
+    if (programming.important_days_text) {
+      drawSection('Días Importantes este Mes', cleanText(programming.important_days_text), errorContainer);
     }
     if (programming.routines_text) {
       drawSection('Rutinas y Consejos', programming.routines_text, tertiaryContainer);
