@@ -7,25 +7,21 @@ const PDFDocument = require('pdfkit');
 // Función para limpiar texto de caracteres problemáticos
 const cleanText = (text) => {
   if (!text || typeof text !== 'string') return '';
-  // Primero reemplazamos todos los caracteres problemáticos
   let cleaned = text
-    .replace(/\u0000/g, '')              // null characters
-    .replace(/Ð/g, '')                  // Ð character 
-    .replace(/ð/g, 'd')                  // eth
-    .replace(/Ø/g, 'O')                 // O with stroke
-    .replace(/ø/g, 'o')                 // o with stroke
-    .replace(/Æ/g, 'AE')                // AE ligature
-    .replace(/æ/g, 'ae')                // ae ligature
-    .replace(/Œ/g, 'OE')                // OE ligature
-    .replace(/œ/g, 'oe');               // oe ligature
-  
-  // Luego limpiamos espacios en blanco extras
-  return cleaned
-    .replace(/\n\s+/g, '\n')             // remove leading spaces after newlines
-    .replace(/[ \t]+/g, ' ')            // multiple spaces to single
-    .replace(/^\s+/g, '')               // remove leading spaces
-    .replace(/\s+$/g, '')               // remove trailing spaces
+    .replace(/\u0000/g, '')
+    .replace(/Ð/g, '')
+    .replace(/ð/g, 'd')
+    .replace(/Ø/g, 'O')
+    .replace(/ø/g, 'o')
+    .replace(/Æ/g, 'AE')
+    .replace(/æ/g, 'ae')
+    .replace(/Œ/g, 'OE')
+    .replace(/œ/g, 'oe')
+    .replace(/[\r\n]+/g, '\n')  // Normalize line endings
+    .replace(/\n\s*/g, '\n')    // Remove whitespace at start of lines
+    .replace(/[ \t]+/g, ' ')
     .trim();
+  return cleaned;
 };
 
 const uploadProgramming = async (req, res) => {
