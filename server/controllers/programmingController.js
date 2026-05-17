@@ -6,10 +6,10 @@ const PDFDocument = require('pdfkit');
 
 const cleanText = (text) => {
   if (!text) return '';
-  // Fix encoding issues and clean up text
-  return text
+  // Fix encoding issues - remove all Ð occurrences aggressively
+  let cleaned = text
     .replace(/\u0000/g, '')  // Remove null characters
-    .replace(/Ð/g, '')       // Remove invalid Ð characters
+    .replace(/Ð+/g, '')      // Remove ALL Ð characters (any quantity)
     .replace(/ð/g, 'd')      // Replace ð with d
     .replace(/Ø/g, 'O')     // Replace Ø with O
     .replace(/ø/g, 'o')     // Replace ø with o
@@ -17,9 +17,11 @@ const cleanText = (text) => {
     .replace(/æ/g, 'ae')    // Replace æ with ae
     .replace(/Œ/g, 'OE')    // Replace Œ with OE
     .replace(/œ/g, 'oe')    // Replace œ with oe
-    .replace(/\n\s*/g, '\n') // Remove leading whitespace after newlines
+    .replace(/\n\s+/g, '\n') // Remove leading whitespace after newlines
     .replace(/^\s+/g, '')    // Remove leading spaces from entire text
+    .replace(/\s+$/g, '')   // Remove trailing spaces
     .trim();
+  return cleaned;
 };
 
 const uploadProgramming = async (req, res) => {
@@ -40,12 +42,23 @@ const uploadProgramming = async (req, res) => {
       extractedText = pdfData.text;
     }
 
+    // Clean all text fields before saving to database
+    const cleanFields = {
+      class_info: cleanText(class_info),
+      unit_title: cleanText(unit_title),
+      unit_subtitle: cleanText(unit_subtitle),
+      unit_description: cleanText(unit_description),
+      routines_text: cleanText(routines_text),
+      english_text: cleanText(english_text),
+      important_days_text: cleanText(important_days_text),
+    };
+
     const result = await pool.query(
       `INSERT INTO programmings 
        (classroom, month, year, course, class_info, unit_title, unit_subtitle, unit_description, routines_text, english_text, important_days_text, pdf_path, extracted_text) 
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) 
-       RETURNING *`,
-      [classroom, month, year, course, class_info, unit_title, unit_subtitle, unit_description, routines_text, english_text, important_days_text, pdfPath, extractedText]
+RETURNING *`,
+       [classroom, month, year, course, cleanFields.class_info, cleanFields.unit_title, cleanFields.unit_subtitle, cleanFields.unit_description, cleanFields.routines_text, cleanFields.english_text, cleanFields.important_days_text, pdfPath, extractedText]
     );
 
     res.status(201).json({
@@ -63,6 +76,17 @@ const updateProgramming = async (req, res) => {
     const { id } = req.params;
     const { classroom, month, year, course, class_info, unit_title, unit_subtitle, unit_description, routines_text, english_text, important_days_text } = req.body;
 
+    // Clean all text fields before updating
+    const cleanFields = {
+      class_info: cleanText(class_info),
+      unit_title: cleanText(unit_title),
+      unit_subtitle: cleanText(unit_subtitle),
+      unit_description: cleanText(unit_description),
+      routines_text: cleanText(routines_text),
+      english_text: cleanText(english_text),
+      important_days_text: cleanText(important_days_text),
+    };
+
     const result = await pool.query(
       `UPDATE programmings 
        SET classroom = $1, month = $2, year = $3, course = $4, class_info = $5, 
@@ -70,7 +94,7 @@ const updateProgramming = async (req, res) => {
            routines_text = $9, english_text = $10, important_days_text = $11
        WHERE id = $12 
        RETURNING *`,
-      [classroom, month, year, course, class_info, unit_title, unit_subtitle, unit_description, routines_text, english_text, important_days_text, id]
+      [classroom, month, year, course, cleanFields.class_info, cleanFields.unit_title, cleanFields.unit_subtitle, cleanFields.unit_description, cleanFields.routines_text, cleanFields.english_text, cleanFields.important_days_text, id]
     );
 
     if (result.rows.length === 0) {
