@@ -4,24 +4,28 @@ const path = require('path');
 const pdfParse = require('pdf-parse');
 const PDFDocument = require('pdfkit');
 
+// Función para limpiar texto de caracteres problemáticos
 const cleanText = (text) => {
-  if (!text) return '';
-  // Fix encoding issues - remove all Ð occurrences aggressively
+  if (!text || typeof text !== 'string') return '';
+  // Primero reemplazamos todos los caracteres problemáticos
   let cleaned = text
-    .replace(/\u0000/g, '')  // Remove null characters
-    .replace(/Ð+/g, '')      // Remove ALL Ð characters (any quantity)
-    .replace(/ð/g, 'd')      // Replace ð with d
-    .replace(/Ø/g, 'O')     // Replace Ø with O
-    .replace(/ø/g, 'o')     // Replace ø with o
-    .replace(/Æ/g, 'AE')    // Replace Æ with AE
-    .replace(/æ/g, 'ae')    // Replace æ with ae
-    .replace(/Œ/g, 'OE')    // Replace Œ with OE
-    .replace(/œ/g, 'oe')    // Replace œ with oe
-    .replace(/\n\s+/g, '\n') // Remove leading whitespace after newlines
-    .replace(/^\s+/g, '')    // Remove leading spaces from entire text
-    .replace(/\s+$/g, '')   // Remove trailing spaces
+    .replace(/\u0000/g, '')              // null characters
+    .replace(/Ð/g, '')                  // Ð character 
+    .replace(/ð/g, 'd')                  // eth
+    .replace(/Ø/g, 'O')                 // O with stroke
+    .replace(/ø/g, 'o')                 // o with stroke
+    .replace(/Æ/g, 'AE')                // AE ligature
+    .replace(/æ/g, 'ae')                // ae ligature
+    .replace(/Œ/g, 'OE')                // OE ligature
+    .replace(/œ/g, 'oe');               // oe ligature
+  
+  // Luego limpiamos espacios en blanco extras
+  return cleaned
+    .replace(/\n\s+/g, '\n')             // remove leading spaces after newlines
+    .replace(/[ \t]+/g, ' ')            // multiple spaces to single
+    .replace(/^\s+/g, '')               // remove leading spaces
+    .replace(/\s+$/g, '')               // remove trailing spaces
     .trim();
-  return cleaned;
 };
 
 const uploadProgramming = async (req, res) => {
@@ -275,15 +279,6 @@ if (programming.unit_description) {
 
     if (programming.important_days_text) {
       drawSection('Días Importantes este Mes', cleanText(programming.important_days_text), errorContainer);
-    }
-    if (programming.routines_text) {
-      drawSection('Rutinas y Consejos', programming.routines_text, tertiaryContainer);
-    }
-    if (programming.english_text) {
-      drawSection('Inglés', programming.english_text, secondaryContainer);
-    }
-    if (programming.important_days_text) {
-      drawSection('Días Importantes este Mes', programming.important_days_text, errorContainer);
     }
 
     const footerY = Math.max(yPos + 20, 750);
