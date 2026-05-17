@@ -4,7 +4,8 @@
   "description": "Babilín - Escuela Infantil Bilingüe",
   "scripts": {
     "dev": "concurrently \"node server/server.js\" \"cd client && npx vite\"",
-    "install:all": "pnpm install && cd server && pnpm install && cd ../client && pnpm install"
+    "install:all": "pnpm install && cd server && pnpm install && cd ../client && pnpm install",
+    "build": "cd client && pnpm build"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
