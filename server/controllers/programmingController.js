@@ -6,7 +6,7 @@ const PDFDocument = require('pdfkit');
 
 const cleanText = (text) => {
   if (!text) return '';
-  // Fix encoding issues: replace common problematic characters
+  // Fix encoding issues and clean up text
   return text
     .replace(/\u0000/g, '')  // Remove null characters
     .replace(/Ð/g, '')       // Remove invalid Ð characters
@@ -17,6 +17,8 @@ const cleanText = (text) => {
     .replace(/æ/g, 'ae')    // Replace æ with ae
     .replace(/Œ/g, 'OE')    // Replace Œ with OE
     .replace(/œ/g, 'oe')    // Replace œ with oe
+    .replace(/\n\s*/g, '\n') // Remove leading whitespace after newlines
+    .replace(/^\s+/g, '')    // Remove leading spaces from entire text
     .trim();
 };
 
