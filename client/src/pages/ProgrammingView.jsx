@@ -22,9 +22,9 @@ const ProgrammingView = () => {
   };
 
   const classroomImages = {
-    ositos: 'https://lh3.googleusercontent.com/aida/ADBb0ujop8FfOMi7cSzpu64tN12iY7S7K-meVtLUE6EKajLAb74bO1M-uS6diGPqZBzEALHpGwaC0PPu0dBs0-RW097a9nYC-Uby4u3Mh4o4yEHRXyPoqsjf1tgNOzD2zEQTnYR4Vy-FZF_4lR6Qhy1oqCrR5QrLTjhtTO5GY-GTwZZTwnPdxrcgl0zrHlDzu5nTt4aZ7KnYTG8hIFPtrAswZBwBi6-OsH6i_bV9yBP8fHsdiXRDmiwSZ6nPDQ',
-    leones: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA67eYFJ8Da59cNLP0wUVtoZcdCIY4qNYHGZ2A8p297u-a-MwQWKCLqvNe9miLy4nnOpcXi4ABzSXcaoMHJOe9wjbOMzJxKhrMM46irhnBks_FuAz-TfwmHijVg6A2lQW28gIwiXVZn-W3_om2HO4_pNoaIbwrY5NF0Oj_7aqp1bUX10hY5ovHuudT4eQpJDtHgBQfe9FXjq-UOA8afR4flTklMrRWjkkh60VKtc_HoCIN3hKaTWsz0rKtqluhvpqx_r4SLiu3LJBU',
-    monitos: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBNfbnrnQxX6YkgkWEaH-h23j82TIaUj5ZUoDgsHUIYuuGTKK2cfwdXIuRKedrTjkHU-afs7nv1CwDteejcZmYde7_H_kS5UE8wzAzHqcLy-P1p4usnOHmrkUqtXIWLyDM4nPI1I8HGvYxy1F7L1tMCMGBN5VrsqH1HtdaxVlP2bVfVZ6pkHbRmmY6VtFOxC6YTcbAPuSsaKAybF7XncMcW36pdEdIn2uQcFEr7Cb3jf37qgalbz9ict7MCTiJfkqJLkWpr1Y5I1SQ'
+    ositos: '/imagenes/osito.png',
+    leones: '/imagenes/Leon.png',
+    monitos: '/imagenes/mono.png'
   };
 
   useEffect(() => {
@@ -133,7 +133,7 @@ const ProgrammingView = () => {
         <div className="relative z-10 w-full px-margin-mobile md:px-margin-desktop pb-8">
           <div className="max-w-4xl mx-auto">
             {/* Info line */}
-            <p className="text-white/90 font-fredoka text-sm md:text-base mb-2">
+            <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-black-300 text-on-tertiary-container font-fredoka text-lg font-medium mb-3">
               Clase: {programming.class_info || classroomNames[classroom]} • Curso: {programming.course || '2025/2026'} • Mes: {programming.month}
             </p>
           </div>

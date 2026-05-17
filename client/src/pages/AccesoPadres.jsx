@@ -79,7 +79,7 @@ const AccesoPadres = () => {
       age: 'De 2 a 3 años',
       color: 'primary-container',
       textColor: 'primary',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBNfbnrnQxX6YkgkWEaH-h23j82TIaUj5ZUoDgsHUIYuuGTKK2cfwdXIuRKedrTjkHU-afs7nv1CwDteejcZmYde7_H_kS5UE8wzAzHqcLy-P1p4usnOHmrkUqtXIWLyDM4nPI1I8HGvYxy1F7L1tMCMGBN5VrsqH1HtdaxVlP2bVfVZ6pkHbRmmY6VtFOxC6YTcbAPuSsaKAybF7XncMcW36pdEdIn2uQcFEr7Cb3jf37qgalbz9ict7MCTiJfkqJLkWpr1Y5I1SQ'
+      image: '/imagenes/mono.png'
     },
     {
       id: 'leones',
@@ -87,7 +87,7 @@ const AccesoPadres = () => {
       age: 'De 1 a 2 años',
       color: 'tertiary-container',
       textColor: 'tertiary',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA67eYFJ8Da59cNLP0wUVtoZcdCIY4qNYHGZ2A8p297u-a-MwQWKCLqvNe9miLy4nnOpcXi4ABzSXcaoMHJOe9wjbOMzJxKhrMM46irhnBks_FuAz-TfwmHijVg6A2lQW28gIwiXVZn-W3_om2HO4_pNoaIbwrY5NF0Oj_7aqp1bUX10hY5ovHuudT4eQpJDtHgBQfe9FXjq-UOA8afR4flTklMrRWjkkh60VKtc_HoCIN3hKaTWsz0rKtqluhvpqx_r4SLiu3LJBU'
+      image: '/imagenes/Leon.png'
     },
     {
       id: 'ositos',
@@ -95,7 +95,7 @@ const AccesoPadres = () => {
       age: 'De 0 a 1 año',
       color: 'secondary-container',
       textColor: 'secondary',
-      image: 'https://lh3.googleusercontent.com/aida/ADBb0ujop8FfOMi7cSzpu64tN12iY7S7K-meVtLUE6EKajLAb74bO1M-uS6diGPqZBzEALHpGwaC0PPu0dBs0-RW097a9nYC-Uby4u3Mh4o4yEHRXyPoqsjf1tgNOzD2zEQTnYR4Vy-FZF_4lR6Qhy1oqCrR5QrLTjhtTO5GY-GTwZZTwnPdxrcgl0zrHlDzu5nTt4aZ7KnYTG8hIFPtrAswZBwBi6-OsH6i_bV9yBP8fHsdiXRDmiwSZ6nPDQ'
+      image: '/imagenes/osito.png'
     }
   ];
 

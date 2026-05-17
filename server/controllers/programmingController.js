@@ -133,171 +133,109 @@ const generateProgrammingPdf = async (req, res) => {
     }
 
     const programming = result.rows[0];
-    
+
     const classroomNames = {
       ositos: 'Ositos',
       leones: 'Leones',
       monitos: 'Monitos'
     };
 
-    const classroomAges = {
-      ositos: '0-1 años',
-      leones: '1-2 años',
-      monitos: '2-3 años'
-    };
-
-    // Create PDF
     const doc = new PDFDocument({
       size: 'A4',
-      margin: 50,
+      margin: 60,
       info: {
         Title: `Programación ${programming.month} ${programming.year} - Aula ${classroomNames[programming.classroom] || programming.classroom}`,
         Author: 'Babilín Escuela Infantil Bilingüe',
       }
     });
 
-    // Set response headers
     res.setHeader('Content-Type', 'application/pdf');
     res.setHeader('Content-Disposition', `attachment; filename="programacion-${programming.classroom}-${programming.month}-${programming.year}.pdf"`);
 
-    // Pipe PDF to response
     doc.pipe(res);
 
-    // Colors
     const primaryColor = '#486173';
     const secondaryColor = '#7e5449';
     const tertiaryColor = '#506351';
     const errorColor = '#ba1a1a';
     const textColor = '#1b1c1a';
-    const lightGray = '#f4f4f0';
+    const primaryContainer = '#bed9ee';
+    const tertiaryContainer = '#c5dbc4';
+    const secondaryContainer = '#fdc5b6';
+    const errorContainer = '#ffdad6';
 
-    // Header background
-    doc.rect(0, 0, 595, 120).fill('#bed9ee');
+    const margin = 60;
+    const contentWidth = 495;
 
-    // School name
-    doc.fontSize(24).fillColor(primaryColor).font('Helvetica-Bold');
-    doc.text('Babilín', 50, 40, { align: 'center' });
-    doc.fontSize(10).fillColor(textColor).font('Helvetica');
-    doc.text('Escuela Infantil Bilingüe', 50, 70, { align: 'center' });
+    let yPos = margin;
+
+    // Title
+    doc.fontSize(22).fillColor(primaryColor).font('Helvetica-Bold');
+    doc.text(programming.unit_title || 'Programación Mensual', { align: 'center', width: contentWidth });
+    if (programming.unit_subtitle) {
+      doc.fontSize(14).fillColor('#73787c').font('Helvetica');
+      doc.text(programming.unit_subtitle, { align: 'center', width: contentWidth });
+    }
+    yPos = doc.y + 15;
 
     // Info line
-    doc.fontSize(11).fillColor(textColor);
-    const classInfo = `Clase: ${programming.class_info || classroomAges[programming.classroom] || programming.classroom}  •  Curso: ${programming.course || '2025/2026'}  •  Mes: ${programming.month} ${programming.year}`;
-    doc.text(classInfo, 50, 100, { align: 'center' });
+    doc.fontSize(15).fillColor(primaryColor).font('Helvetica');
+    doc.text(`Aula ${classroomNames[programming.classroom] || programming.classroom}  •  ${programming.month} ${programming.year}  •  ${programming.course || ''}`, { align: 'center', width: contentWidth });
+    yPos = doc.y + 25;
 
-    // Move down
-    doc.y = 150;
+    const drawSection = (title, content, bgColor) => {
+      if (!content) return;
 
-    // Unit Title Section
-    if (programming.unit_title) {
-      // Section header background
-      doc.rect(40, doc.y - 10, 515, 35).fill('#bed9ee');
-      doc.fontSize(14).fillColor(primaryColor).font('Helvetica-Bold');
-      doc.text('UNIDAD DIDÁCTICA', 50, doc.y);
-      doc.moveDown(0.5);
-      
-      doc.fontSize(20).fillColor(primaryColor).font('Helvetica-Bold');
-      doc.text(programming.unit_title, 50, doc.y);
-      doc.moveDown(0.3);
-      
-      if (programming.unit_subtitle) {
-        doc.fontSize(14).fillColor(textColor).font('Helvetica');
-        doc.text(programming.unit_subtitle, 50, doc.y);
-        doc.moveDown(0.5);
+      const sectionX = 30;
+      const sectionWidth = 535;
+      const padX = 25;
+      const textWidth = sectionWidth - padX * 2;
+
+      if (yPos > 620) {
+        doc.addPage();
+        yPos = margin;
       }
 
-      if (programming.unit_description) {
-        doc.fontSize(11).fillColor(textColor).font('Helvetica');
-        const descLines = programming.unit_description.split('\n');
-        for (const line of descLines) {
-          const trimmed = line.trim();
-          if (!trimmed) {
-            doc.moveDown(0.3);
-            continue;
-          }
-          if (trimmed.startsWith('•') || trimmed.startsWith('-') || trimmed.startsWith('*')) {
-            doc.text(`  ${trimmed}`, 60, doc.y, { width: 475 });
-          } else {
-            doc.text(trimmed, 50, doc.y, { width: 495 });
-          }
-          doc.moveDown(0.2);
-        }
-      }
-      doc.moveDown(0.5);
+      const headerH = 40;
+      const sectionY = yPos;
+
+      doc.fontSize(11).fillColor(textColor).font('Helvetica');
+      const textH = doc.heightOfString(content, { width: textWidth });
+
+      const sectionH = headerH + 30 + textH + 30;
+
+      doc.roundedRect(sectionX, sectionY, sectionWidth, sectionH, 10).fill('#ffffff');
+      doc.roundedRect(sectionX, sectionY, sectionWidth, headerH, 10).fill(bgColor);
+      doc.roundedRect(sectionX, sectionY + 30, sectionWidth, 10).fill(bgColor);
+
+      doc.fontSize(13).fillColor(textColor).font('Helvetica-Bold');
+      doc.text(title, sectionX + padX, sectionY + 12, { width: textWidth });
+
+      doc.fontSize(11).fillColor(textColor).font('Helvetica');
+      doc.text(content, sectionX + padX, sectionY + headerH + 20, { width: textWidth });
+
+      yPos = sectionY + sectionH + 30;
+    };
+
+    if (programming.unit_description) {
+      drawSection('Descripción de la Unidad', programming.unit_description, primaryContainer);
     }
-
-    // Routines Section
     if (programming.routines_text) {
-      doc.rect(40, doc.y - 10, 515, 30).fill('#c5dbc4');
-      doc.fontSize(14).fillColor(tertiaryColor).font('Helvetica-Bold');
-      doc.text('Rutinas y Consejos', 50, doc.y);
-      doc.moveDown(0.5);
-      
-      doc.fontSize(11).fillColor(textColor).font('Helvetica');
-      const routineLines = programming.routines_text.split('\n');
-      for (const line of routineLines) {
-        const trimmed = line.trim();
-        if (!trimmed) {
-          doc.moveDown(0.3);
-          continue;
-        }
-        if (trimmed.startsWith('•') || trimmed.startsWith('-') || trimmed.startsWith('*')) {
-          doc.text(`  ${trimmed}`, 60, doc.y, { width: 475 });
-        } else {
-          doc.text(trimmed, 50, doc.y, { width: 495 });
-        }
-        doc.moveDown(0.2);
-      }
-      doc.moveDown(0.5);
+      drawSection('Rutinas y Consejos', programming.routines_text, tertiaryContainer);
     }
-
-    // English Section
     if (programming.english_text) {
-      doc.rect(40, doc.y - 10, 515, 30).fill('#fdc5b6');
-      doc.fontSize(14).fillColor(secondaryColor).font('Helvetica-Bold');
-      doc.text('Inglés', 50, doc.y);
-      doc.moveDown(0.5);
-      
-      doc.fontSize(11).fillColor(textColor).font('Helvetica');
-      const englishLines = programming.english_text.split('\n');
-      for (const line of englishLines) {
-        const trimmed = line.trim();
-        if (!trimmed) {
-          doc.moveDown(0.3);
-          continue;
-        }
-        doc.text(trimmed, 50, doc.y, { width: 495 });
-        doc.moveDown(0.2);
-      }
-      doc.moveDown(0.5);
+      drawSection('Inglés', programming.english_text, secondaryContainer);
     }
-
-    // Important Days Section
     if (programming.important_days_text) {
-      doc.rect(40, doc.y - 10, 515, 30).fill('#ffdad6');
-      doc.fontSize(14).fillColor(errorColor).font('Helvetica-Bold');
-      doc.text('Días Importantes este Mes', 50, doc.y);
-      doc.moveDown(0.5);
-      
-      doc.fontSize(11).fillColor(textColor).font('Helvetica');
-      const daysLines = programming.important_days_text.split('\n');
-      for (const line of daysLines) {
-        const trimmed = line.trim();
-        if (!trimmed) {
-          doc.moveDown(0.3);
-          continue;
-        }
-        doc.text(trimmed, 50, doc.y, { width: 495 });
-        doc.moveDown(0.2);
-      }
+      drawSection('Días Importantes este Mes', programming.important_days_text, errorContainer);
     }
 
-    // Footer
-    doc.fontSize(8).fillColor('#73787c');
-    doc.text('Babilín Escuela Infantil Bilingüe Chamartín', 50, 780, { align: 'center', width: 495 });
-    doc.text(`Generado el ${new Date().toLocaleDateString('es-ES')}`, 50, 792, { align: 'center', width: 495 });
+    const footerY = Math.max(yPos + 20, 750);
+    doc.moveTo(30, footerY).lineTo(565, footerY).stroke('#c2c7cc');
+    doc.fontSize(8).fillColor('#73787c').font('Helvetica');
+    doc.text('Babilín Escuela Infantil Bilingüe Chamartín', 60, footerY + 10, { align: 'center', width: contentWidth });
+    doc.text(`Generado el ${new Date().toLocaleDateString('es-ES')}`, 60, footerY + 22, { align: 'center', width: contentWidth });
 
-    // End PDF
     doc.end();
 
   } catch (error) {
