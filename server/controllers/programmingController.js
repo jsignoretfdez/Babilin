@@ -110,8 +110,10 @@ const downloadProgramming = async (req, res) => {
     const programming = result.rows[0];
     const pdfPath = programming.pdf_path;
 
+    // If PDF doesn't exist (Render ephemeral storage), generate a new one
     if (!pdfPath || !fs.existsSync(pdfPath)) {
-      return res.status(404).json({ message: 'PDF no disponible.' });
+      console.log('PDF no encontrado, generando uno nuevo...');
+      return generateProgrammingPdf(req, res);
     }
 
     res.setHeader('Content-Type', 'application/pdf');
